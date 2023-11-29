@@ -1,15 +1,14 @@
 import logging
-from robusta.api import action, PodEvent, JsonBlock
+from robusta.api import action, JobChangeEvent, JsonBlock, RobustaJob
 
 
 @action
-def parse_job_failure(event: PodEvent):
-    pod = event.get_pod()
-    pod_name = pod.metadata.name
-    pod_labels = pod.metadata.labels
+def parse_job_failure(event: JobChangeEvent):
+    job: RobustaJob = event.get_job()
+    job_name: str = job.metadata.name
 
-    logging.info(f"PodEvent triggered! {pod_name=} {pod_labels=}")
+    logging.info(f"JobChangeEvent triggered! {job_name=}")
 
     event.add_enrichment([
-        JsonBlock(f"pod_name: {pod_name}, pod_labels: {pod_labels}"),
+        JsonBlock(f"job_name: {job_name}"),
     ])

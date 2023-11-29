@@ -1,4 +1,6 @@
+import json
 import logging
+
 from robusta.api import action, JobChangeEvent, JsonBlock, RobustaJob
 
 
@@ -7,8 +9,8 @@ def parse_job_failure(event: JobChangeEvent):
     job: RobustaJob = event.get_job()
     job_name: str = job.metadata.name
 
-    logging.info(f"JobChangeEvent triggered! {job_name=}")
+    logging.info(f"JobChangeEvent triggered! {job_name=} {job.metadata=}")
 
     event.add_enrichment([
-        JsonBlock(f"job_name: {job_name}"),
+        JsonBlock(json.dumps({"job_name": job_name})),
     ])

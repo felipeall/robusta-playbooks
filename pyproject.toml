@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "robusta-playbooks"
+version = "0.1.0"
+description = ""
+authors = ["Felipe Allegretti <felipeallh@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+
+[tool.poetry.group.dev.dependencies]
+robusta-cli = "^0.10.25"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

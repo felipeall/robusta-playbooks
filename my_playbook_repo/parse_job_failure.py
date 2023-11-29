@@ -3,7 +3,7 @@ from robusta.api import action, PodEvent, JsonBlock
 
 
 @action
-def my_action(event: PodEvent):
+def parse_job_failure(event: PodEvent):
     pod = event.get_pod()
     pod_name = pod.metadata.name
     pod_labels = pod.metadata.labels

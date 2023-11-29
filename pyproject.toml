@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "robusta-playbooks"
+name = "my_playbook_repo"
 version = "0.1.0"
 description = ""
 authors = ["Felipe Allegretti <felipeallh@gmail.com>"]
